@@ -27,6 +27,10 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
+      # Firebase authentication token beállítása
+      - name: Set up Firebase Authentication Token
+        run: echo "$FIREBASE_TOKEN" | firebase login:ci --token
+
       - name: Deploy to Firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
